@@ -1,0 +1,58 @@
+{
+  "hardware": {
+    "chip": "Apple M4",
+    "memory_gb": "24",
+    "model": "Mac16,13",
+    "os": "macOS-26.6.2-arm64-arm-64bit",
+    "power": "Now drawing from 'AC Power'",
+    "low_power_mode": "0",
+    "git_commit": "49b9a93",
+    "uncommitted_changes": "True"
+  },
+  "protocol": {
+    "configs": [
+      "A",
+      "B",
+      "D",
+      "E"
+    ],
+    "rates": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "runs": 1,
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "kv_cache_gb": 2.0,
+    "warmup": 30.0,
+    "duration": 60.0,
+    "drain_timeout": 30.0,
+    "cooldown": 30.0,
+    "extra": {
+      "configs": [
+        "C"
+      ],
+      "rates": [
+        1.0
+      ],
+      "runs": 1,
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "kv_cache_gb": 2.0,
+      "warmup": 30.0,
+      "duration": 60.0,
+      "drain_timeout": 30.0,
+      "cooldown": 30.0,
+      "out": "benchmarks/results/llama-3.2-3b"
+    }
+  },
+  "commands": {
+    "A": "uv run python benchmarks/hf_server.py --model meta-llama/Llama-3.2-3B-Instruct --port 8123",
+    "B": "uv run python -m tinyserve --model meta-llama/Llama-3.2-3B-Instruct --port 8123 --batching static --max-batch-size 16",
+    "D": "uv run python -m tinyserve --model meta-llama/Llama-3.2-3B-Instruct --port 8123 --kv-cache-gb 2.0 --max-model-len 2048 --max-batch-size 64 --kv-cache paged",
+    "E": "uvx --from mlx-lm==0.32.0 mlx_lm.server --model meta-llama/Llama-3.2-3B-Instruct --port 8123 --decode-concurrency 64 --log-level WARNING",
+    "C": "uv run python -m tinyserve --model meta-llama/Llama-3.2-3B-Instruct --port 8123 --kv-cache-gb 2.0 --max-model-len 2048 --max-batch-size 64 --kv-cache contiguous"
+  },
+  "workload": "load_gen.py: chat 'Write a detailed essay about <topic>' + 0-180 filler words (~50-300 prompt tokens), max_tokens uniform 32-256, ignore_eos where supported, temperature 0, Poisson arrivals",
+  "started": "2026-10-13 00:20:17",
+  "note": "Run on commit 49b9a93 plus uncommitted changes: the enable_gqa attention path (model/attention.py, REPEAT_KV_HEADS=False) and the benchmark scripts themselves; both are in the commit that adds these results. Light protocol: 1 run per point, 30 s warmup, 60 s measured, 30 s drain, 30 s cooldown."
+}

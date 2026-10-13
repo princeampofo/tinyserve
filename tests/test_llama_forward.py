@@ -5,6 +5,7 @@ import torch
 from conftest import PROMPTS, Model, tiny_hf_model
 from transformers import PreTrainedTokenizerBase
 
+from tinyserve.model import attention
 from tinyserve.model.llama import LlamaConfig, forward
 
 
@@ -49,3 +50,16 @@ def test_llama_3_2_1b_logits_match_huggingface(
         # fp32 with different op ordering: logits (range ~±30) agree to ~1e-4.
         torch.testing.assert_close(actual, expected, atol=2e-3, rtol=1e-3)
         assert torch.equal(actual.argmax(-1), expected.argmax(-1))
+
+
+def test_both_grouped_query_attention_paths_give_the_same_logits(
+    tiny: Model, device: str, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    input_ids = torch.randint(0, tiny.config.vocab_size, (2, 24), device=device)
+    with torch.no_grad():
+        monkeypatch.setattr(attention, "REPEAT_KV_HEADS", True)
+        repeated = forward(tiny.weights, tiny.config, input_ids)
+        monkeypatch.setattr(attention, "REPEAT_KV_HEADS", False)
+        grouped = forward(tiny.weights, tiny.config, input_ids)
+
+    torch.testing.assert_close(grouped, repeated, atol=1e-5, rtol=1e-5)

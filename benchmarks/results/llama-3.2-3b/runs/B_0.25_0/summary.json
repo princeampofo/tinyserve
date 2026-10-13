@@ -1,0 +1,16 @@
+{
+  "output_tokens_per_s": 37.03333333333333,
+  "requests_sent": 15,
+  "requests_completed": 15,
+  "requests_failed": 0,
+  "ttft_censored": 0,
+  "ttft_p50_s": 12.49726666600327,
+  "ttft_p99_s": 25.158891833008965,
+  "itl_p50_s": 0.10543162500835024,
+  "itl_p99_s": 0.11885595798958093,
+  "e2e_p50_s": 29.33441512499121,
+  "mean_output_tokens": 150.2,
+  "peak_running": 8.0,
+  "peak_kv_used": 0.0,
+  "preemptions": 0.0
+}

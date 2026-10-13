@@ -1,0 +1,2300 @@
+/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py:1745: UserWarning: mlx_lm.server is not recommended for production as it only implements basic security checks.
+  warnings.warn(
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5104.25it/s]
+127.0.0.1 - - [13/Oct/2026 00:13:59] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:13:59] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:13:59] "GET /metrics HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:14:00] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:00] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:08] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:13] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:14] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:17] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:20] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:24] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:30] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:31] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:31] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:38] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:46] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:46] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:48] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:53] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:14:54] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:15:06] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:15:15] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:15:15] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:15:15] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:15:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:02] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:02] "GET /metrics HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:16:02] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:02] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:06] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:09] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:10] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:11] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:12] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:14] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:22] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:25] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:25] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:27] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:36] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:42] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:47] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:48] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:49] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:50] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:50] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:50] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:51] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:53] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:54] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:54] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:55] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:56] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:56] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:16:56] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:00] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:02] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:04] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:04] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:14] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:19] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:24] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:17:30] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:15] "GET /v1/models HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:15] "GET /metrics HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:18:15] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:16] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:17] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:19] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:20] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:20] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:22] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:23] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:23] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:23] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:25] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:26] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:27] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:27] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:28] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:32] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:34] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:34] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:34] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:36] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:38] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:38] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:39] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:39] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:39] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:40] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:41] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:41] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:41] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:42] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:42] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:43] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:43] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:45] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:45] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:46] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:47] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:52] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:53] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:54] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:54] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:55] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:57] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:18:59] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:00] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:01] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:03] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:03] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:04] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:06] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:08] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:09] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:10] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:10] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:10] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:11] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:12] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:12] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:13] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:14] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:15] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:16] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:16] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:17] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:18] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:20] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:20] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:21] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:22] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:26] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:27] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:27] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:28] "POST /v1/chat/completions HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 00:19:29] "POST /v1/chat/completions HTTP/1.1" 200 -
+2026-10-13 00:19:30,343 - ERROR - mlx_lm.server generation thread died: [METAL] Command buffer execution failed: Insufficient Memory (00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory).
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 448, in _run_generate
+    self._generate()
+    ~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 818, in _generate
+    prompt_responses, gen_responses = batch_generator.next()
+                                      ~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/generate.py", line 1870, in next
+    return self._next()
+           ~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/generate.py", line 1790, in _next
+    generation_responses = self._generation_batch.next()
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/generate.py", line 1449, in next
+    tokens, logprobs = self._step()
+                       ~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/generate.py", line 1405, in _step
+    mx.async_eval(self._next_tokens, self._next_logprobs, token_context)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: [METAL] Command buffer execution failed: Insufficient Memory (00000008:kIOGPUCommandBufferCallbackErrorOutOfMemory).
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54844)
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54785)
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54815)
+----------------------------------------
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54818)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54813)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54797)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54802)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54812)
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54783)
+Exception occurred during processing of request from ('127.0.0.1', 54816)
+Exception occurred during processing of request from ('127.0.0.1', 54788)
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54817)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54808)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54819)
+Exception occurred during processing of request from ('127.0.0.1', 54814)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54823)
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54831)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54835)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54836)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54842)
+----------------------------------------
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54791)
+----------------------------------------
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54806)
+Traceback (most recent call last):
+----------------------------------------
+Traceback (most recent call last):
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54822)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54827)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54833)
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54837)
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54841)
+Exception occurred during processing of request from ('127.0.0.1', 54786)
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54828)
+Traceback (most recent call last):
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54798)
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54803)
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54820)
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54821)
+----------------------------------------
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54832)
+Traceback (most recent call last):
+----------------------------------------
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54840)
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54809)
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54829)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54838)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54830)
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54800)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Exception occurred during processing of request from ('127.0.0.1', 54810)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54825)
+Exception occurred during processing of request from ('127.0.0.1', 54826)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54824)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+Exception occurred during processing of request from ('127.0.0.1', 54795)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54839)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+Exception occurred during processing of request from ('127.0.0.1', 54801)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: generation thread died
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+Exception occurred during processing of request from ('127.0.0.1', 54834)
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+Traceback (most recent call last):
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 54843)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+----------------------------------------
+----------------------------------------
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1738, in <lambda>
+    lambda *args, **kwargs: handler_class(
+                            ~~~~~~~~~~~~~^
+        response_generator,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ),
+    ^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1071, in __init__
+    super().__init__(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/miniconda3/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: generation thread died
+----------------------------------------
+RuntimeError: generation thread died
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/miniconda3/lib/python3.13/http/server.py", line 424, in handle_one_request
+    method()
+    ~~~~~~^^
+----------------------------------------
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+----------------------------------------
+RuntimeError: generation thread died
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1200, in do_POST
+    self.handle_completion(request, stop_words)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1459, in handle_completion
+    for gen in response:
+               ^^^^^^^^
+----------------------------------------
+RuntimeError: generation thread died
+----------------------------------------
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1035, in _inner
+    response = self._await_response(response_queue)
+  File "/Users/prince/.cache/uv/archive-v0/cpIWBGOaKUnO9DTj/lib/python3.13/site-packages/mlx_lm/server.py", line 1020, in _await_response
+    raise RuntimeError("generation thread died") from None
+RuntimeError: generation thread died
+RuntimeError: generation thread died
+----------------------------------------
+----------------------------------------
+----------------------------------------
+----------------------------------------
+127.0.0.1 - - [13/Oct/2026 00:19:32] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:33] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:34] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:36] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:36] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:37] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:40] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:41] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:42] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:42] "POST /v1/chat/completions HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 00:19:43] "POST /v1/chat/completions HTTP/1.1" 404 -

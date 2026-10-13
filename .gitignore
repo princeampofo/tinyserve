@@ -9,4 +9,5 @@ __pycache__/
 SPEC.md
 learning.md
 
+.DS_Storebenchmarks/results/**/server_*.log
 .DS_Store
