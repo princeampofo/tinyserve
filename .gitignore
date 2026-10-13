@@ -9,5 +9,10 @@ __pycache__/
 SPEC.md
 learning.md
 
-.DS_Storebenchmarks/results/**/server_*.log
 .DS_Store
+
+# Server logs from benchmark runs
+benchmarks/results/**/server_*.log
+
+# Per-request detail from benchmark runs (results.csv, summary.md and the plots are kept)
+benchmarks/results/**/runs/
