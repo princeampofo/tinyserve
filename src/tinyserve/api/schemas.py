@@ -10,17 +10,24 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
+class StreamOptions(BaseModel):
+    include_usage: bool = False  # send a last chunk with token counts
+
+
 class SamplingFields(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     model: str = ""
     temperature: float = Field(1.0, ge=0.0, le=2.0)
     top_p: float = Field(1.0, gt=0.0, le=1.0)
-    top_k: int = Field(0, ge=0)  # not in OpenAI's API; send it with the client's extra_body
+    # Not in OpenAI's API; clients send these through extra_body.
+    top_k: int = Field(0, ge=0)
+    ignore_eos: bool = False  # generate exactly max_tokens, for load testing
     stop: str | list[str] | None = None
     seed: int | None = None
     n: int = 1
     stream: bool = False
+    stream_options: StreamOptions | None = None
 
     def stop_list(self) -> list[str]:
         if self.stop is None:

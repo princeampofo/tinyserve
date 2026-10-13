@@ -17,6 +17,7 @@ class SamplingParams:
     top_p: float = 1.0  # keep the smallest set of tokens whose probabilities sum to top_p
     seed: int | None = None  # same seed + same prompt -> same output
     stop: list[str] = field(default_factory=list)  # end the output when any of these appears
+    ignore_eos: bool = False  # keep going past EOS, for load tests that need exact lengths
 
 
 def make_generator(seed: int | None, device: str | torch.device) -> torch.Generator:

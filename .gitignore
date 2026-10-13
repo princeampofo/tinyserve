@@ -8,3 +8,5 @@ __pycache__/
 # Personal notes, not part of the published repo
 SPEC.md
 learning.md
+
+.DS_Store

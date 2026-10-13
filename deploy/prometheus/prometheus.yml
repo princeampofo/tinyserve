@@ -1,0 +1,8 @@
+# Scrapes the server running natively on the Mac (containers can't use the Metal GPU).
+global:
+  scrape_interval: 2s # short, so the dashboard moves while a load test runs
+
+scrape_configs:
+  - job_name: tinyserve
+    static_configs:
+      - targets: ["host.docker.internal:8000"]

@@ -25,6 +25,7 @@ from tinyserve.engine.kv_cache import KVCache
 from tinyserve.engine.request import Request, append_token
 from tinyserve.engine.sampler import SamplingParams, make_generator, sample
 from tinyserve.engine.scheduler import Scheduler
+from tinyserve.metrics import prometheus as metrics
 from tinyserve.model.llama import LlamaConfig, LlamaWeights, forward
 
 log = logging.getLogger(__name__)
@@ -164,6 +165,7 @@ class Engine:
         self.kv_cache = kv_cache
         self.kv_cache_gb = kv_cache_gb
         self.queue: queue.Queue[Request] = queue.Queue()
+        self.scheduler: Scheduler | None = None  # the running scheduler, for inspection
 
     def submit(self, request: Request) -> None:
         self.queue.put(request)
@@ -174,8 +176,18 @@ class Engine:
 
     def _finish(self, requests: list[Request]) -> None:
         for request in requests:
+            metrics.record_finish(request.arrival_time, str(request.finish_reason))
             if request.on_finish is not None:
                 request.on_finish(request)
+
+    def _record_state(self, scheduler: Scheduler, preemptions_before: int) -> None:
+        metrics.PREEMPTIONS.inc(scheduler.num_preemptions - preemptions_before)
+        allocator = scheduler.allocator
+        metrics.record_scheduler_state(
+            waiting=len(scheduler.waiting) + self.queue.qsize(),
+            running=len(scheduler.running),
+            kv_blocks_used_ratio=1 - allocator.num_free / allocator.num_blocks,
+        )
 
     def _new_scheduler(self) -> Scheduler:
         return Scheduler.with_memory_budget(
@@ -189,22 +201,25 @@ class Engine:
         )
 
     def _continuous_loop(self) -> None:
-        scheduler = self._new_scheduler()
+        scheduler = self.scheduler = self._new_scheduler()
         while True:
             # Block only when idle; otherwise pick up new arrivals without waiting
             # and go straight back to stepping the running sequences.
             if not scheduler.has_work():
+                self._record_state(scheduler, scheduler.num_preemptions)  # idle: all zeros
                 scheduler.add(self.queue.get())
             while not self.queue.empty():
                 scheduler.add(self.queue.get_nowait())
+            preemptions_before = scheduler.num_preemptions
             try:
                 finished = scheduler.step()
+                self._record_state(scheduler, preemptions_before)
             except Exception:
                 log.exception("scheduler step failed; failing all in-flight requests")
                 finished = [s.request for s in scheduler.running] + list(scheduler.waiting)
                 for request in finished:
                     request.finish_reason = request.finish_reason or "error"
-                scheduler = self._new_scheduler()
+                scheduler = self.scheduler = self._new_scheduler()
             self._finish(finished)
 
     def _next_batch(self) -> list[Request]:
@@ -229,6 +244,9 @@ class Engine:
             if not batch:
                 continue
             log.info("running a batch of %d requests", len(batch))
+            metrics.record_scheduler_state(
+                waiting=self.queue.qsize(), running=len(batch), kv_blocks_used_ratio=0.0
+            )
             try:
                 run_static_batch(self.weights, self.config, batch, self.tokenizer)
             except Exception:
@@ -237,3 +255,6 @@ class Engine:
                     if not request.finished:
                         request.finish_reason = "error"
             self._finish(batch)
+            metrics.record_scheduler_state(
+                waiting=self.queue.qsize(), running=0, kv_blocks_used_ratio=0.0
+            )

@@ -12,7 +12,7 @@ hf auth login   # Llama 3.2 is gated: request access at huggingface.co/meta-llam
 ## Serve
 
 ```bash
-uv run python -m tinyserve            # OpenAI-compatible API on localhost:8000
+uv run python -m tinyserve            # OpenAI-compatible API on localhost:8000, streaming + /metrics
 ```
 
 ```python
@@ -21,6 +21,15 @@ from openai import OpenAI
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="unused")
 client.chat.completions.create(model="llama", messages=[{"role": "user", "content": "Hi!"}])
 ```
+
+## Monitor
+
+```bash
+docker compose -f deploy/docker-compose.monitoring.yml up -d   # Grafana on localhost:3000
+uv run python benchmarks/load_gen.py --rate 2 --duration 60      # Poisson load, streamed
+```
+
+![Grafana dashboard during a load test](deploy/grafana/dashboard.png)
 
 ## Generate
 
