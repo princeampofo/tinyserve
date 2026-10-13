@@ -40,3 +40,14 @@ line-length = 100
 
 [tool.mypy]
 ignore_missing_imports = true
+
+# On Linux (containers, CI), install CPU-only PyTorch: PyPI's Linux wheels pull
+# in ~4 GB of CUDA libraries that a CPU container can't use. macOS is unaffected.
+# The GPU image swaps in a CUDA build (see deploy/Dockerfile).
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true

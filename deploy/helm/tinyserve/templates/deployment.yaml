@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels: {app: {{ .Release.Name }}}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels: {app: {{ .Release.Name }}}
+  template:
+    metadata:
+      labels: {app: {{ .Release.Name }}}
+      annotations:
+        # Prometheus discovers and scrapes pods that carry these.
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: /metrics
+    spec:
+      containers:
+        - name: tinyserve
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - --model={{ .Values.model }}
+            - --device={{ .Values.device }}
+            {{- range .Values.extraArgs }}
+            - {{ . }}
+            {{- end }}
+          ports:
+            - {name: http, containerPort: 8000}
+          {{- if .Values.hfTokenSecret }}
+          env:
+            - name: HF_TOKEN
+              valueFrom: {secretKeyRef: {name: {{ .Values.hfTokenSecret }}, key: HF_TOKEN}}
+          {{- end }}
+          # /health only answers once the model is loaded, so:
+          startupProbe: # allow up to 10 minutes for a first-time model download and load
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+            failureThreshold: 120
+          readinessProbe: # the Service sends traffic only to pods that answer
+            httpGet: {path: /health, port: http}
+            periodSeconds: 5
+          livenessProbe: # restart a pod that stops answering
+            httpGet: {path: /health, port: http}
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - {name: hf-cache, mountPath: /hf-cache}
+      volumes:
+        - name: hf-cache
+          {{- if .Values.hfCache.hostPath }}
+          hostPath: {path: {{ .Values.hfCache.hostPath }}, type: Directory}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}

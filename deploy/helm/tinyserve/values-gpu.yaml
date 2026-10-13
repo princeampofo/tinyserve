@@ -1,0 +1,39 @@
+# Cloud GPU overrides: helm install tinyserve deploy/helm/tinyserve -f deploy/helm/tinyserve/values-gpu.yaml
+# Build the image with --build-arg TORCH_BACKEND=cu126 and push it to a registry first.
+
+image:
+  repository: ghcr.io/YOUR_ORG/tinyserve # placeholder: your registry
+  tag: gpu
+  pullPolicy: Always
+
+model: meta-llama/Llama-3.2-3B-Instruct
+device: cuda
+extraArgs:
+  - --kv-cache-gb=12
+  - --max-model-len=4096
+  - --max-batch-size=64
+
+hfCache:
+  hostPath: null # pods download the model into an emptyDir
+
+hfTokenSecret: hf-token # kubectl create secret generic hf-token --from-literal=HF_TOKEN=hf_...
+
+resources:
+  requests:
+    cpu: "4"
+    memory: 16Gi
+    nvidia.com/gpu: 1
+  limits:
+    memory: 24Gi
+    nvidia.com/gpu: 1
+
+service:
+  type: ClusterIP
+  port: 8000
+  nodePort: null
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 4
+  targetWaitingRequests: 4

@@ -1,0 +1,14 @@
+# prometheus-community/prometheus, trimmed to what the HPA needs: one server
+# that scrapes pods annotated prometheus.io/scrape=true.
+alertmanager: {enabled: false}
+prometheus-pushgateway: {enabled: false}
+prometheus-node-exporter: {enabled: false}
+kube-state-metrics: {enabled: false}
+server:
+  global:
+    scrape_interval: 5s # the HPA sees a queue within seconds
+    scrape_timeout: 4s # must not exceed the interval (Prometheus rejects the config otherwise)
+  retention: 6h
+  persistentVolume: {enabled: false}
+  resources:
+    requests: {cpu: 100m, memory: 256Mi}

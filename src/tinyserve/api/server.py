@@ -11,12 +11,15 @@ engine stops generating for it and frees its KV cache blocks.
 """
 
 import asyncio
+import socket
 import time
 from collections.abc import AsyncIterator, Callable
+from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from transformers import PreTrainedTokenizerBase
 
@@ -46,6 +49,7 @@ def create_app(
     model_name: str,
     max_model_len: int = 4096,
     request_timeout_s: float = 600.0,
+    ui_dir: Path | None = None,
 ) -> FastAPI:
     app = FastAPI(title="tinyserve")
 
@@ -164,12 +168,23 @@ def create_app(
 
     @app.get("/health")
     def health() -> dict[str, str]:
-        # The app is only created after the model has loaded, so serving at all means ready.
+        # The app is only created after the model has loaded, so serving at all
+        # means ready, unless the engine thread has died, in which case nothing
+        # would ever be generated: report it, so an orchestrator restarts us.
+        if not engine.alive:
+            raise HTTPException(503, "engine thread is not running")
         return {"status": "ok"}
 
     @app.get("/metrics")
     def metrics() -> Response:
-        return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
+        # X-Instance says which replica answered: behind a load balancer,
+        # consecutive scrapes can reach different pods, and their counters
+        # can only be compared with their own earlier values.
+        return Response(
+            generate_latest(),
+            media_type=CONTENT_TYPE_LATEST,
+            headers={"X-Instance": socket.gethostname()},
+        )
 
     @app.get("/v1/models")
     def models() -> dict[str, object]:
@@ -275,5 +290,9 @@ def create_app(
             ],
             usage=usage(request),
         )
+
+    if ui_dir is not None:
+        # The demo page (ui/). Mounted last, so the API routes above take precedence.
+        app.mount("/", StaticFiles(directory=ui_dir, html=True), name="ui")
 
     return app

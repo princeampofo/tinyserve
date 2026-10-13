@@ -1,0 +1,16 @@
+# prometheus-adapter: serves Prometheus series to Kubernetes as custom metrics,
+# so an HPA can scale on them.
+prometheus:
+  url: http://prometheus-server.monitoring.svc
+  port: 80
+rules:
+  default: false
+  custom:
+    # waiting_requests{namespace, pod} -> custom metric "waiting_requests" per pod
+    - seriesQuery: 'waiting_requests{namespace!="",pod!=""}'
+      resources:
+        overrides:
+          namespace: {resource: namespace}
+          pod: {resource: pod}
+      name: {as: waiting_requests}
+      metricsQuery: 'avg(<<.Series>>{<<.LabelMatchers>>}) by (<<.GroupBy>>)'

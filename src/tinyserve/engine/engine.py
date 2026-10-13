@@ -166,13 +166,27 @@ class Engine:
         self.kv_cache_gb = kv_cache_gb
         self.queue: queue.Queue[Request] = queue.Queue()
         self.scheduler: Scheduler | None = None  # the running scheduler, for inspection
+        self.thread: threading.Thread | None = None
 
     def submit(self, request: Request) -> None:
         self.queue.put(request)
 
     def start(self) -> None:
-        target = self._continuous_loop if self.batching == "continuous" else self._static_loop
-        threading.Thread(target=target, name="engine", daemon=True).start()
+        """Start the engine thread. The scheduler (and its KV cache) is built here, on
+        the caller's thread, so a bad configuration fails at startup instead of
+        killing the engine thread while the server keeps accepting requests."""
+        if self.batching == "continuous":
+            self.scheduler = self._new_scheduler()
+            target = self._continuous_loop
+        else:
+            target = self._static_loop
+        self.thread = threading.Thread(target=target, name="engine", daemon=True)
+        self.thread.start()
+
+    @property
+    def alive(self) -> bool:
+        """False if the engine thread has died: the server can't generate anything."""
+        return self.thread is not None and self.thread.is_alive()
 
     def _finish(self, requests: list[Request]) -> None:
         for request in requests:
@@ -200,16 +214,25 @@ class Engine:
             self.tokenizer,
         )
 
+    def _add(self, scheduler: Scheduler, request: Request) -> None:
+        try:
+            scheduler.add(request)
+        except ValueError:  # e.g. longer than max_model_len: fail this request, not the engine
+            log.warning("rejected request %s", request.id, exc_info=True)
+            request.finish_reason = "error"
+            self._finish([request])
+
     def _continuous_loop(self) -> None:
-        scheduler = self.scheduler = self._new_scheduler()
+        assert self.scheduler is not None  # built by start()
+        scheduler = self.scheduler
         while True:
             # Block only when idle; otherwise pick up new arrivals without waiting
             # and go straight back to stepping the running sequences.
             if not scheduler.has_work():
                 self._record_state(scheduler, scheduler.num_preemptions)  # idle: all zeros
-                scheduler.add(self.queue.get())
+                self._add(scheduler, self.queue.get())
             while not self.queue.empty():
-                scheduler.add(self.queue.get_nowait())
+                self._add(scheduler, self.queue.get_nowait())
             preemptions_before = scheduler.num_preemptions
             try:
                 finished = scheduler.step()

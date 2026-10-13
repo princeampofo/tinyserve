@@ -1,0 +1,137 @@
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.10);
+  --series: #2a78d6;
+  --accent: #2a78d6;
+  --user-bubble: #e8f0fb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --ink: #f0efec;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.10);
+    --series: #3987e5;
+    --accent: #3987e5;
+    --user-bubble: #1d2a3b;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.10);
+  --series: #3987e5;
+  --accent: #3987e5;
+  --user-bubble: #1d2a3b;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+h1 { font-size: 18px; margin: 0; }
+.muted { color: var(--muted); }
+.pill { margin-left: auto; font-size: 12px; color: var(--ink-2); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 24px;
+  padding: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media (max-width: 860px) { main { grid-template-columns: 1fr; padding: 16px; } }
+
+.chat, .metrics {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+.chat { display: flex; flex-direction: column; min-height: 70vh; }
+.messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-bottom: 12px; }
+.bubble { max-width: 85%; padding: 8px 12px; border-radius: 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.bubble.user { align-self: flex-end; background: var(--user-bubble); }
+.bubble.assistant { align-self: flex-start; border: 1px solid var(--border); }
+.bubble.streaming::after { content: "▍"; color: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  font: inherit;
+  color: var(--ink);
+  background: var(--page);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 8px; color: var(--ink-2); font-size: 13px; }
+.controls input { width: 64px; font: inherit; color: var(--ink); background: var(--page); border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; }
+#chat-meta { flex: 1; font-size: 12px; }
+button { font: inherit; border: 0; border-radius: 8px; padding: 6px 16px; background: var(--accent); color: #fff; cursor: pointer; }
+#stop { background: var(--ink-2); }
+
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 8px; }
+.tile { display: flex; flex-direction: column; padding: 8px 0; }
+.tile .label { font-size: 12px; color: var(--ink-2); }
+.tile .value { font-size: 24px; font-variant-numeric: tabular-nums; }
+
+figure { margin: 16px 0 0; }
+figcaption { font-size: 13px; color: var(--ink-2); margin-bottom: 4px; }
+.chart { position: relative; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; touch-action: none; }
+.chart .series { stroke: var(--series); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .series-dot { fill: var(--series); stroke: var(--surface); stroke-width: 2; }
+.chart .gridline { stroke: var(--grid); stroke-width: 1; }
+.chart .baseline { stroke: var(--axis); stroke-width: 1; }
+.chart .crosshair { stroke: var(--muted); stroke-width: 1; }
+.chart .tick { fill: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+.tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.tooltip[hidden] { display: none; }
+.tooltip span { color: var(--ink-2); }
+.note { font-size: 12px; margin: 16px 0 0; }
+code { font-size: 12px; }

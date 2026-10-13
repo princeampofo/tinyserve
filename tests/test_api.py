@@ -13,6 +13,7 @@ import openai
 import pytest
 import uvicorn
 from conftest import Model, tiny_hf_model
+from fastapi import FastAPI
 from openai.types.chat import ChatCompletionMessageParam
 from prometheus_client import REGISTRY
 from prometheus_client.parser import text_string_to_metric_families
@@ -49,7 +50,12 @@ def serve(
     )
     engine.start()
     app = create_app(engine, tokenizer, "tinyserve-test", max_model_len=512)
+    for url in serve_app(app):
+        yield Running(url, engine)
 
+
+def serve_app(app: FastAPI) -> Iterator[str]:
+    """Run an app with uvicorn on a free local port in a background thread; yield its URL."""
     with socket.socket() as s:
         s.bind(("127.0.0.1", 0))
         port = s.getsockname()[1]
@@ -59,7 +65,7 @@ def serve(
     while not server.started:
         time.sleep(0.01)
 
-    yield Running(f"http://127.0.0.1:{port}", engine)
+    yield f"http://127.0.0.1:{port}"
     server.should_exit = True
     thread.join()
 
@@ -303,6 +309,7 @@ def test_metrics_count_requests_and_tokens(base_url: str, client: openai.OpenAI)
     assert increase("e2e_latency_seconds_count[]") == 1
     assert increase("requests_total[('status', 'length')]") == 1
     assert "kv_blocks_used_ratio[]" in after and "waiting_requests[]" in after
+    assert httpx.get(f"{base_url}/metrics").headers["X-Instance"]  # which replica answered
 
 
 @pytest.mark.slow
@@ -319,3 +326,22 @@ def test_llama_3_2_1b_answers_a_question_through_the_openai_client(
         )
         assert "Paris" in (response.choices[0].message.content or "")
         assert response.choices[0].finish_reason == "stop"
+
+
+def test_a_kv_cache_too_small_for_one_sequence_fails_at_startup(
+    tiny_with_real_vocab: Model, tokenizer: PreTrainedTokenizerBase
+) -> None:
+    """Not later, on the engine thread, while the server keeps accepting requests."""
+    m = tiny_with_real_vocab
+    engine = Engine(m.weights, m.config, tokenizer, max_model_len=4096, kv_cache_gb=0.0001)
+    with pytest.raises(ValueError):
+        engine.start()
+
+
+def test_health_reports_a_dead_engine(
+    tiny_with_real_vocab: Model, tokenizer: PreTrainedTokenizerBase
+) -> None:
+    m = tiny_with_real_vocab
+    engine = Engine(m.weights, m.config, tokenizer)  # never started: no engine thread
+    for running in serve_app(create_app(engine, tokenizer, "dead")):
+        assert httpx.get(f"{running}/health").status_code == 503

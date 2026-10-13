@@ -40,6 +40,7 @@ hf auth login   # Llama 3.2 is gated: request access at huggingface.co/meta-llam
 
 ```bash
 uv run python -m tinyserve            # OpenAI-compatible API on localhost:8000, streaming + /metrics
+(cd ui && npm ci && npm run build) && uv run python -m tinyserve --ui-dir ui   # plus the demo page at /
 ```
 
 ```python
@@ -48,6 +49,20 @@ from openai import OpenAI
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="unused")
 client.chat.completions.create(model="llama", messages=[{"role": "user", "content": "Hi!"}])
 ```
+
+## Deploy (Kubernetes, local)
+
+```bash
+./deploy/up.sh     # kind cluster + Prometheus + prometheus-adapter + tinyserve; ~2 min
+open http://localhost:8080
+./deploy/down.sh
+```
+
+Needs Docker (8–10 GB for its VM), `kind`, `kubectl` and `helm`. The Helm chart ([`deploy/helm/tinyserve`](deploy/helm/tinyserve)) runs CPU containers with a small Llama-architecture model (SmolLM2-360M) and autoscales on queue depth: an HPA reads the per-pod `waiting_requests` metric through prometheus-adapter and adds a replica when the average queue passes 2. Locally, every pod shares one Docker VM's CPUs, so this demonstrates the control loop (scale-up in ~10 s, scale-down 2 min after the queue drains), not extra capacity; performance numbers come from native runs above. [`values-gpu.yaml`](deploy/helm/tinyserve/values-gpu.yaml) is the starting point for a cloud GPU node.
+
+The image is multi-stage, CPU-only PyTorch, 1.6 GB: `docker buildx build -f deploy/Dockerfile --platform linux/arm64,linux/amd64 .`
+
+![Demo UI: streamed chat and live server metrics](ui/screenshot.png)
 
 ## Monitor
 

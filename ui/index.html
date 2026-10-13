@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tinyserve</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>tinyserve</h1>
+    <span id="model" class="muted">loading model…</span>
+    <span id="status" class="pill">connecting</span>
+  </header>
+
+  <main>
+    <section class="chat" aria-label="Chat">
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="chat-form">
+        <textarea id="prompt" rows="3" placeholder="Ask something… (Enter to send, Shift+Enter for a new line)"></textarea>
+        <div class="controls">
+          <label>max tokens <input id="max-tokens" type="number" min="1" max="1024" value="256"></label>
+          <label>temperature <input id="temperature" type="number" min="0" max="2" step="0.1" value="0.7"></label>
+          <span id="chat-meta" class="muted"></span>
+          <button id="send" type="submit">Send</button>
+          <button id="stop" type="button" hidden>Stop</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="metrics" aria-label="Live server metrics">
+      <div class="tiles">
+        <div class="tile"><span class="label">output tokens/s</span><span id="stat-throughput" class="value">–</span></div>
+        <div class="tile"><span class="label">TTFT p50</span><span id="stat-ttft" class="value">–</span></div>
+        <div class="tile"><span class="label">running / waiting</span><span id="stat-running" class="value">–</span></div>
+        <div class="tile"><span class="label">KV cache used</span><span id="stat-kv" class="value">–</span></div>
+      </div>
+      <figure><figcaption>Output tokens per second</figcaption><div id="chart-throughput" class="chart"></div></figure>
+      <figure><figcaption>Time to first token, p50</figcaption><div id="chart-ttft" class="chart"></div></figure>
+      <figure><figcaption>KV cache blocks used</figcaption><div id="chart-kv" class="chart"></div></figure>
+      <p class="muted note">From <code>/metrics</code> every 2 s, over the last 10 s. With several replicas, each poll may reach a different pod; each point is one pod's own rate.</p>
+    </section>
+  </main>
+
+  <script type="module" src="dist/main.js"></script>
+</body>
+</html>

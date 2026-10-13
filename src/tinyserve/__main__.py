@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+from pathlib import Path
 
 import torch
 import uvicorn
@@ -37,6 +38,7 @@ def main() -> None:
         "--batch-wait-ms", type=float, default=50, help="static batching: wait to fill a batch"
     )
     parser.add_argument("--max-model-len", type=int, default=4096, help="prompt + output tokens")
+    parser.add_argument("--ui-dir", type=Path, help="serve the demo page from here (e.g. ui/)")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
@@ -66,7 +68,7 @@ def main() -> None:
     )
     engine.start()
 
-    app = create_app(engine, tokenizer, args.model, args.max_model_len)
+    app = create_app(engine, tokenizer, args.model, args.max_model_len, ui_dir=args.ui_dir)
     uvicorn.run(app, host=args.host, port=args.port)
 
 

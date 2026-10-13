@@ -1,0 +1,27 @@
+{{- if .Values.autoscaling.enabled }}
+# Scales on queue depth: waiting_requests, scraped by Prometheus and served to
+# Kubernetes as a per-pod custom metric by prometheus-adapter.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Release.Name }}
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
+    - type: Pods
+      pods:
+        metric: {name: waiting_requests}
+        target:
+          type: AverageValue
+          averageValue: "{{ .Values.autoscaling.targetWaitingRequests }}"
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0 # react to a queue at once
+    scaleDown:
+      stabilizationWindowSeconds: 120 # but don't drop replicas the moment it drains
+{{- end }}

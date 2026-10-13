@@ -16,3 +16,7 @@ benchmarks/results/**/server_*.log
 
 # Per-request detail from benchmark runs (results.csv, summary.md and the plots are kept)
 benchmarks/results/**/runs/
+
+# Demo UI build output and dependencies
+ui/node_modules/
+ui/dist/

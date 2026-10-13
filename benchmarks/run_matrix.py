@@ -88,7 +88,9 @@ def hardware() -> dict[str, str]:
         "power": sh("pmset", "-g", "batt").splitlines()[0],
         "low_power_mode": sh("sh", "-c", "pmset -g | grep lowpowermode").split()[-1],
         "git_commit": sh("git", "rev-parse", "--short", "HEAD"),
-        "uncommitted_changes": str(bool(sh("git", "status", "--porcelain", "--untracked-files=no"))),
+        "uncommitted_changes": str(
+            bool(sh("git", "status", "--porcelain", "--untracked-files=no"))
+        ),
     }
 
 

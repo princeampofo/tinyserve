@@ -1,0 +1,15 @@
+# Only pyproject, uv.lock, README, src/ and ui/ are needed to build the image.
+.git
+.venv
+**/__pycache__
+**/.mypy_cache
+**/.pytest_cache
+**/.ruff_cache
+**/.DS_Store
+ui/node_modules
+ui/dist
+benchmarks
+tests
+deploy
+SPEC.md
+learning.md

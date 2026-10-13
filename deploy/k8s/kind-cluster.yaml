@@ -1,0 +1,13 @@
+# Local cluster for container mode. up.sh fills in HF_CACHE (the host's
+# HuggingFace cache) so pods can load models without downloading them.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: tinyserve
+nodes:
+  - role: control-plane
+    extraMounts:
+      - hostPath: ${HF_CACHE}
+        containerPath: /hf-cache
+    extraPortMappings:
+      - containerPort: 30080 # the tinyserve Service's NodePort...
+        hostPort: 8080 # ...reachable at http://localhost:8080

@@ -1,0 +1,14 @@
+{
+  "name": "tinyserve-ui",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Demo page for tinyserve: streamed chat and live server metrics",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}
