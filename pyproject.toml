@@ -1,0 +1,36 @@
+[project]
+name = "tinyserve"
+version = "0.1.0"
+description = "A from-scratch LLM serving engine: continuous batching, paged KV cache, OpenAI-compatible API."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.4",
+    "transformers>=4.45",
+    "safetensors>=0.4",
+    "huggingface-hub>=0.25",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: needs the real Llama 3.2 weights from HuggingFace (run with -m slow)",
+]
+addopts = "-m 'not slow'"
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+ignore_missing_imports = true
