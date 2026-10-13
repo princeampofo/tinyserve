@@ -2,26 +2,11 @@
 
 import pytest
 import torch
-from conftest import PROMPTS, Model
+from conftest import PROMPTS, Model, hf_greedy
 from transformers import PreTrainedTokenizerBase
 
 from tinyserve.engine.engine import generate
 from tinyserve.engine.sampler import SamplingParams
-
-
-def hf_greedy(model: Model, prompt_ids: list[int], max_tokens: int) -> list[int]:
-    input_ids = torch.tensor([prompt_ids], device=model.hf.device)
-    out = model.hf.generate(  # type: ignore[misc]  # transformers annotates `self` twice
-        input_ids,
-        attention_mask=torch.ones_like(input_ids),
-        max_new_tokens=max_tokens,
-        do_sample=False,
-        temperature=None,
-        top_p=None,
-        eos_token_id=model.config.eos_token_ids,
-        pad_token_id=model.config.eos_token_ids[0],
-    )
-    return out[0, len(prompt_ids) :].tolist()
 
 
 @pytest.mark.parametrize("use_kv_cache", [True, False])

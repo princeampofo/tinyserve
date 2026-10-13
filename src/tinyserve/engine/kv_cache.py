@@ -44,3 +44,7 @@ class KVCache:
     @property
     def max_len(self) -> int:
         return self.k[0].shape[2]
+
+    def row(self, i: int) -> "KVCache":
+        """The cache of one sequence in the batch, as a view: writes go to the full cache."""
+        return KVCache(k=[k[i : i + 1] for k in self.k], v=[v[i : i + 1] for v in self.v])

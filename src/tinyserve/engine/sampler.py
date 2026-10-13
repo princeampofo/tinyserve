@@ -4,7 +4,7 @@ Everything is done for the whole batch at once (one row per sequence), with
 each row's own settings, so a batch can mix greedy and sampled requests.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import torch
 
@@ -16,6 +16,7 @@ class SamplingParams:
     top_k: int = 0  # keep only the k most likely tokens; 0 means no limit
     top_p: float = 1.0  # keep the smallest set of tokens whose probabilities sum to top_p
     seed: int | None = None  # same seed + same prompt -> same output
+    stop: list[str] = field(default_factory=list)  # end the output when any of these appears
 
 
 def make_generator(seed: int | None, device: str | torch.device) -> torch.Generator:

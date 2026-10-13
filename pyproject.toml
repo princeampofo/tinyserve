@@ -9,6 +9,8 @@ dependencies = [
     "transformers>=4.45",
     "safetensors>=0.4",
     "huggingface-hub>=0.25",
+    "fastapi>=0.143.0",
+    "uvicorn>=0.54.0",
 ]
 
 [dependency-groups]
@@ -16,6 +18,8 @@ dev = [
     "pytest>=8",
     "ruff>=0.6",
     "mypy>=1.11",
+    "openai>=3.29.0",
+    "httpx>=0.28.1",
 ]
 
 [build-system]

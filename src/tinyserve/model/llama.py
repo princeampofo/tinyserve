@@ -180,15 +180,17 @@ def attention_block(
     config: LlamaConfig,
     cos: torch.Tensor,
     sin: torch.Tensor,
-    start_pos: int,
+    positions: torch.Tensor,
+    kv_len: int,
     k_cache: torch.Tensor | None,
     v_cache: torch.Tensor | None,
 ) -> torch.Tensor:
     """Project to q/k/v, rotate q/k by position, attend, project back. x: [batch, seq, hidden].
 
-    With a cache, the new tokens' K and V are written into it at
-    [start_pos, start_pos + seq), and attention reads every cached token from 0
-    up to the newest one. Without a cache, the tokens attend only to each other.
+    With a cache, row b's new K and V are written into the cache at
+    positions[b], and attention reads the first kv_len cached tokens (enough
+    for the longest row; the mask hides the rest from shorter rows). Without a
+    cache, the tokens attend only to each other.
     """
     batch, seq, _ = x.shape
     # [batch, seq, heads * head_dim] -> [batch, heads, seq, head_dim]
@@ -200,12 +202,17 @@ def attention_block(
     k = apply_rope(k, cos, sin)
 
     if k_cache is not None and v_cache is not None:
-        end = start_pos + seq
-        k_cache[:, :, start_pos:end] = k
-        v_cache[:, :, start_pos:end] = v
-        k, v = k_cache[:, :, :end], v_cache[:, :, :end]
+        # Scatter each row's new K/V to its own positions. Indexing dims 0 and 2
+        # with [batch, seq] index tensors selects a [batch, seq, kv_heads, head_dim] block.
+        rows = torch.arange(batch, device=x.device)[:, None]
+        k_cache[rows, :, positions] = k.transpose(1, 2)
+        v_cache[rows, :, positions] = v.transpose(1, 2)
+        k, v = k_cache[:, :, :kv_len], v_cache[:, :, :kv_len]
+        q_index = positions  # a token's position is its index in the cache
+    else:
+        q_index = torch.arange(seq, device=x.device).expand(batch, seq)
 
-    out = causal_attention(q, k, v)  # [batch, heads, seq, head_dim]
+    out = causal_attention(q, k, v, q_index)  # [batch, heads, seq, head_dim]
     out = out.transpose(1, 2).reshape(batch, seq, config.num_heads * config.head_dim)
     return out @ w.wo.T
 
@@ -226,17 +233,22 @@ def forward(
     weights: LlamaWeights,
     config: LlamaConfig,
     input_ids: torch.Tensor,
-    start_pos: int = 0,
+    start_pos: int | list[int] = 0,
     cache: KVCache | None = None,
 ) -> torch.Tensor:
     """Run the model on new tokens. input_ids: [batch, seq] -> logits: [batch, seq, vocab].
 
-    The tokens sit at positions start_pos .. start_pos + seq - 1. Prefill passes
-    the whole prompt with start_pos=0; each decode step passes one token with
-    start_pos = number of tokens already in the cache.
+    Row b's tokens sit at positions start_pos[b] .. start_pos[b] + seq - 1
+    (an int means every row starts there). Prefill passes a whole prompt with
+    start_pos=0; a decode step passes one token per row, with each row's
+    start_pos = the number of tokens already in its cache row.
     """
-    seq = input_ids.shape[1]
-    positions = torch.arange(start_pos, start_pos + seq, device=input_ids.device)[None]
+    batch, seq = input_ids.shape
+    starts = [start_pos] * batch if isinstance(start_pos, int) else start_pos
+    positions = torch.tensor(starts, device=input_ids.device)[:, None] + torch.arange(
+        seq, device=input_ids.device
+    )  # [batch, seq]
+    kv_len = max(starts) + seq  # computed from Python ints: reading it off the GPU would stall
 
     x = weights.embed[input_ids]  # [batch, seq, hidden]
     cos, sin = rope_cos_sin(positions, rope_inv_freq(config, x.device), x.dtype)
@@ -247,7 +259,7 @@ def forward(
         # Pre-norm residual blocks: normalize the input to each block, then add
         # its output back onto the unnormalized "residual stream" x.
         h = rms_norm(x, layer.attn_norm, config.rms_norm_eps)
-        x = x + attention_block(h, layer, config, cos, sin, start_pos, k_cache, v_cache)
+        x = x + attention_block(h, layer, config, cos, sin, positions, kv_len, k_cache, v_cache)
         x = x + mlp_block(rms_norm(x, layer.mlp_norm, config.rms_norm_eps), layer)
 
     x = rms_norm(x, weights.final_norm, config.rms_norm_eps)

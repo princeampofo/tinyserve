@@ -40,12 +40,12 @@ class Model:
     weights: LlamaWeights
 
 
-def tiny_hf_model(device: str = "cpu") -> LlamaForCausalLM:
+def tiny_hf_model(device: str = "cpu", vocab_size: int = 512) -> LlamaForCausalLM:
     """A 2-layer random-weight Llama with the same shape rules as Llama 3.2:
     GQA (4 query heads per KV head), llama3 RoPE scaling, tied embeddings."""
     torch.manual_seed(0)
     hf_config = HFLlamaConfig(
-        vocab_size=512,
+        vocab_size=vocab_size,
         hidden_size=128,
         intermediate_size=256,
         num_hidden_layers=2,
@@ -91,3 +91,18 @@ def llama_1b(device: str) -> Iterator[Model]:
 @pytest.fixture(scope="session")
 def tokenizer() -> PreTrainedTokenizerBase:
     return AutoTokenizer.from_pretrained(DEFAULT_MODEL)
+
+
+def hf_greedy(model: Model, prompt_ids: list[int], max_tokens: int) -> list[int]:
+    input_ids = torch.tensor([prompt_ids], device=model.hf.device)
+    out = model.hf.generate(  # type: ignore[misc]  # transformers annotates `self` twice
+        input_ids,
+        attention_mask=torch.ones_like(input_ids),
+        max_new_tokens=max_tokens,
+        do_sample=False,
+        temperature=None,
+        top_p=None,
+        eos_token_id=model.config.eos_token_ids,
+        pad_token_id=model.config.eos_token_ids[0],
+    )
+    return out[0, len(prompt_ids) :].tolist()

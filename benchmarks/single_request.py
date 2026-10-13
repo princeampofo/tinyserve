@@ -1,7 +1,7 @@
 """Generate text for one prompt and report decode speed.
 
-    uv run python benchmarks/single_request.py "Explain what a KV cache is."
-    uv run python benchmarks/single_request.py --no-kv-cache --max-tokens 256
+uv run python benchmarks/single_request.py "Explain what a KV cache is."
+uv run python benchmarks/single_request.py --no-kv-cache --max-tokens 256
 """
 
 import argparse
@@ -35,7 +35,8 @@ def main() -> None:
     if args.ignore_eos:
         config.eos_token_ids = []
     messages = [{"role": "user", "content": args.prompt}]
-    prompt_ids = tokenizer.apply_chat_template(messages, add_generation_prompt=True).input_ids
+    prompt = tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
+    prompt_ids = tokenizer(str(prompt), add_special_tokens=False).input_ids
     params = SamplingParams(max_tokens=args.max_tokens, temperature=args.temperature, seed=0)
     use_kv_cache = not args.no_kv_cache
 
