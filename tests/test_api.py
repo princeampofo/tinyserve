@@ -29,7 +29,13 @@ def serve(
 ) -> Iterator[str]:
     """Run the real server on a free local port in a background thread; yield its base URL."""
     engine = Engine(
-        weights, config, tokenizer, max_batch_size=4, batching=batching, max_model_len=512
+        weights,
+        config,
+        tokenizer,
+        max_batch_size=4,
+        batching=batching,
+        max_model_len=512,
+        kv_cache_gb=0.05,
     )
     engine.start()
     app = create_app(engine, tokenizer, "tinyserve-test", max_model_len=512)

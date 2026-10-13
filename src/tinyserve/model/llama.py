@@ -19,7 +19,7 @@ from typing import Any
 import torch
 import torch.nn.functional as F
 
-from tinyserve.engine.kv_cache import KVCache
+from tinyserve.engine.kv_cache import KVCache, token_indices
 from tinyserve.model.attention import causal_attention
 
 
@@ -181,18 +181,17 @@ def attention_block(
     cos: torch.Tensor,
     sin: torch.Tensor,
     positions: torch.Tensor,
-    kv_len: int,
     k_cache: torch.Tensor | None,
     v_cache: torch.Tensor | None,
-    slots: torch.Tensor | None,
+    write_idx: torch.Tensor | None,
+    read_idx: torch.Tensor | None,
 ) -> torch.Tensor:
     """Project to q/k/v, rotate q/k by position, attend, project back. x: [batch, seq, hidden].
 
-    With a cache, batch row b's new K and V are written into cache row
-    slots[b] (or row b if slots is None) at positions[b], and attention reads
-    the first kv_len cached tokens of that row (enough for the longest row; the
-    mask hides the rest from shorter rows). Without a cache, the tokens attend
-    only to each other.
+    With a cache, the new tokens' K and V are scattered into the cache at
+    write_idx, then each sequence's tokens are gathered from read_idx into a
+    contiguous [batch, kv_heads, kv_len, head_dim] tensor for attention (see
+    kv_cache.token_indices). Without a cache, the tokens attend only to each other.
     """
     batch, seq, _ = x.shape
     # [batch, seq, heads * head_dim] -> [batch, heads, seq, head_dim]
@@ -203,17 +202,16 @@ def attention_block(
     q = apply_rope(q, cos, sin)
     k = apply_rope(k, cos, sin)
 
-    if k_cache is not None and v_cache is not None:
-        # Scatter each row's new K/V to its own positions. Indexing dims 0 and 2
-        # with [batch, seq] index tensors selects a [batch, seq, kv_heads, head_dim] block.
-        rows = slots if slots is not None else torch.arange(batch, device=x.device)
-        k_cache[rows[:, None], :, positions] = k.transpose(1, 2)
-        v_cache[rows[:, None], :, positions] = v.transpose(1, 2)
-        if slots is None:  # rows 0..batch-1 of the cache: read them in place
-            k, v = k_cache[:batch, :, :kv_len], v_cache[:batch, :, :kv_len]
-        else:  # scattered rows: gather them into a new contiguous [batch, ...] tensor
-            k, v = k_cache[slots, :, :kv_len], v_cache[slots, :, :kv_len]
-        q_index = positions  # a token's position is its index in the cache
+    if k_cache is not None and v_cache is not None and write_idx is not None:
+        # View the cache as one flat list of token slots: [num_blocks * block_size, kv_heads, head_dim].
+        k_flat = k_cache.view(-1, config.num_kv_heads, config.head_dim)
+        v_flat = v_cache.view(-1, config.num_kv_heads, config.head_dim)
+        k_flat[write_idx] = k.transpose(1, 2)  # [batch, seq, kv_heads, head_dim]
+        v_flat[write_idx] = v.transpose(1, 2)
+        # The gather: each sequence's tokens, wherever their blocks are, in order.
+        k = k_flat[read_idx].transpose(1, 2)  # [batch, kv_heads, kv_len, head_dim]
+        v = v_flat[read_idx].transpose(1, 2)
+        q_index = positions  # a token's position is its index in the gathered K/V
     else:
         q_index = torch.arange(seq, device=x.device).expand(batch, seq)
 
@@ -240,26 +238,30 @@ def forward(
     input_ids: torch.Tensor,
     start_pos: int | list[int] = 0,
     cache: KVCache | None = None,
-    slots: list[int] | None = None,
+    block_tables: list[list[int]] | None = None,
 ) -> torch.Tensor:
     """Run the model on new tokens. input_ids: [batch, seq] -> logits: [batch, seq, vocab].
 
     Row b's tokens sit at positions start_pos[b] .. start_pos[b] + seq - 1
     (an int means every row starts there). Prefill passes a whole prompt with
     start_pos=0; a decode step passes one token per row, with each row's
-    start_pos = the number of tokens already in its cache row.
+    start_pos = the number of tokens already in its cache.
 
-    slots[b] is the cache row that batch row b uses. A continuous-batching
-    engine runs whichever sequences are active, wherever their rows are.
-    None means batch row b is cache row b.
+    block_tables[b] lists the cache blocks holding row b's tokens, and must
+    already cover every position being written. None means row b uses block b
+    (one big block per sequence, as in a contiguous cache).
     """
     batch, seq = input_ids.shape
     starts = [start_pos] * batch if isinstance(start_pos, int) else start_pos
     positions = torch.tensor(starts, device=input_ids.device)[:, None] + torch.arange(
         seq, device=input_ids.device
     )  # [batch, seq]
-    kv_len = max(starts) + seq  # computed from Python ints: reading it off the GPU would stall
-    slot_ids = torch.tensor(slots, device=input_ids.device) if slots is not None else None
+
+    write_idx = read_idx = None
+    if cache is not None:
+        tables = block_tables if block_tables is not None else [[b] for b in range(batch)]
+        kv_len = max(starts) + seq  # from Python ints: reading it off the GPU would stall
+        write_idx, read_idx = token_indices(tables, positions, kv_len, cache.block_size)
 
     x = weights.embed[input_ids]  # [batch, seq, hidden]
     cos, sin = rope_cos_sin(positions, rope_inv_freq(config, x.device), x.dtype)
@@ -271,7 +273,7 @@ def forward(
         # its output back onto the unnormalized "residual stream" x.
         h = rms_norm(x, layer.attn_norm, config.rms_norm_eps)
         x = x + attention_block(
-            h, layer, config, cos, sin, positions, kv_len, k_cache, v_cache, slot_ids
+            h, layer, config, cos, sin, positions, k_cache, v_cache, write_idx, read_idx
         )
         x = x + mlp_block(rms_norm(x, layer.mlp_norm, config.rms_norm_eps), layer)
 

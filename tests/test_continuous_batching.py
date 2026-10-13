@@ -1,5 +1,5 @@
 """Continuous batching gives every request exactly the output it gets alone,
-however requests join and leave the running batch."""
+however requests join and leave the running batch, with either cache layout."""
 
 import pytest
 import torch
@@ -10,6 +10,22 @@ from tinyserve.engine.engine import generate
 from tinyserve.engine.request import Request
 from tinyserve.engine.sampler import SamplingParams
 from tinyserve.engine.scheduler import Scheduler
+
+
+@pytest.fixture(params=["paged", "contiguous"])
+def kv_cache(request: pytest.FixtureRequest) -> str:
+    return str(request.param)
+
+
+def make_scheduler(model: Model, kv_cache: str, max_num_seqs: int, max_model_len: int) -> Scheduler:
+    """A scheduler with plenty of memory: these tests are about batching, not running out."""
+    if kv_cache == "contiguous":
+        num_blocks, block_size = max_num_seqs, max_model_len
+    else:
+        num_blocks, block_size = max_num_seqs * max_model_len // 16, 16
+    return Scheduler(
+        model.weights, model.config, max_num_seqs, max_model_len, num_blocks, block_size
+    )
 
 
 def random_prompts(lengths: list[int], vocab_size: int) -> list[list[int]]:
@@ -24,11 +40,11 @@ def run_until_done(scheduler: Scheduler) -> list[Request]:
     return finished
 
 
-def test_more_requests_than_slots_all_match_huggingface(tiny: Model) -> None:
-    """With 2 slots and 5 requests, later requests take over slots as earlier ones finish."""
+def test_more_requests_than_fit_at_once_all_match_huggingface(tiny: Model, kv_cache: str) -> None:
+    """With room for 2 sequences and 5 requests, later requests start as earlier ones finish."""
     prompts = random_prompts([5, 17, 9, 30, 3], tiny.config.vocab_size)
     max_tokens = [20, 4, 11, 7, 15]
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=2, max_model_len=64)
+    scheduler = make_scheduler(tiny, kv_cache, 2, 64)
     requests = [
         Request(p, SamplingParams(max_tokens=m, temperature=0)) for p, m in zip(prompts, max_tokens)
     ]
@@ -41,10 +57,10 @@ def test_more_requests_than_slots_all_match_huggingface(tiny: Model) -> None:
         assert request.output_ids == hf_greedy(tiny, prompt, m)
 
 
-def test_a_request_joining_mid_flight_gets_the_same_output(tiny: Model) -> None:
+def test_a_request_joining_mid_flight_gets_the_same_output(tiny: Model, kv_cache: str) -> None:
     first, second = random_prompts([8, 12], tiny.config.vocab_size)
     greedy = SamplingParams(max_tokens=20, temperature=0)
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=4, max_model_len=64)
+    scheduler = make_scheduler(tiny, kv_cache, 4, 64)
     a, b = Request(first, greedy), Request(second, greedy)
 
     scheduler.add(a)
@@ -57,9 +73,9 @@ def test_a_request_joining_mid_flight_gets_the_same_output(tiny: Model) -> None:
     assert b.output_ids == hf_greedy(tiny, second, 20)
 
 
-def test_a_finished_request_leaves_at_the_step_it_finishes(tiny: Model) -> None:
+def test_a_finished_request_leaves_at_the_step_it_finishes(tiny: Model, kv_cache: str) -> None:
     short, long = random_prompts([4, 4], tiny.config.vocab_size)
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=2, max_model_len=64)
+    scheduler = make_scheduler(tiny, kv_cache, 2, 64)
     scheduler.add(Request(short, SamplingParams(max_tokens=3, temperature=0)))
     scheduler.add(Request(long, SamplingParams(max_tokens=30, temperature=0)))
 
@@ -67,15 +83,17 @@ def test_a_finished_request_leaves_at_the_step_it_finishes(tiny: Model) -> None:
 
     # Step 1 prefills (token 1) and decodes (token 2); step 2 produces token 3.
     assert finished_per_step == [0, 1, 0]
-    assert len(scheduler.running) == 1 and len(scheduler.free_slots) == 1
+    assert len(scheduler.running) == 1
 
 
-def test_seeded_sampling_does_not_depend_on_the_rest_of_the_batch(tiny: Model) -> None:
+def test_seeded_sampling_does_not_depend_on_the_rest_of_the_batch(
+    tiny: Model, kv_cache: str
+) -> None:
     prompt, *others = random_prompts([12, 4, 25], tiny.config.vocab_size)
     params = SamplingParams(max_tokens=20, temperature=1.0, top_p=0.9, seed=42)
     alone = generate(tiny.weights, tiny.config, prompt, params)
 
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=3, max_model_len=64)
+    scheduler = make_scheduler(tiny, kv_cache, 3, 64)
     request = Request(prompt, params)
     scheduler.add(Request(others[0], SamplingParams(max_tokens=30, temperature=0.7)))
     scheduler.step()
@@ -86,20 +104,20 @@ def test_seeded_sampling_does_not_depend_on_the_rest_of_the_batch(tiny: Model) -
     assert request.output_ids == alone
 
 
-def test_all_slots_are_free_after_every_request_finishes(tiny: Model) -> None:
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=3, max_model_len=64)
+def test_every_block_is_free_after_every_request_finishes(tiny: Model, kv_cache: str) -> None:
+    scheduler = make_scheduler(tiny, kv_cache, 3, 64)
     for prompt in random_prompts([5, 6, 7, 8, 9, 10, 11], tiny.config.vocab_size):
         scheduler.add(Request(prompt, SamplingParams(max_tokens=6, temperature=0)))
 
     finished = run_until_done(scheduler)
 
     assert len(finished) == 7
-    assert sorted(scheduler.free_slots) == [0, 1, 2]
+    assert scheduler.allocator.num_free == scheduler.allocator.num_blocks
 
 
-def test_an_aborted_request_frees_its_slot(tiny: Model) -> None:
+def test_an_aborted_request_frees_its_blocks(tiny: Model, kv_cache: str) -> None:
     prompts = random_prompts([5, 5], tiny.config.vocab_size)
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=1, max_model_len=64)
+    scheduler = make_scheduler(tiny, kv_cache, 1, 64)
     running = Request(prompts[0], SamplingParams(max_tokens=50, temperature=0))
     waiting = Request(prompts[1], SamplingParams(max_tokens=5, temperature=0))
     scheduler.add(running)
@@ -112,22 +130,22 @@ def test_an_aborted_request_frees_its_slot(tiny: Model) -> None:
 
     assert len(running.output_ids) < 50
     assert waiting.output_ids == hf_greedy(tiny, prompts[1], 5)
-    assert scheduler.free_slots == [0]
+    assert scheduler.allocator.num_free == scheduler.allocator.num_blocks
 
 
-def test_a_request_too_long_for_a_slot_is_rejected(tiny: Model) -> None:
-    scheduler = Scheduler(tiny.weights, tiny.config, max_num_seqs=1, max_model_len=16)
+def test_a_request_longer_than_max_model_len_is_rejected(tiny: Model, kv_cache: str) -> None:
+    scheduler = make_scheduler(tiny, kv_cache, 1, 16)
     with pytest.raises(ValueError):
         scheduler.add(Request(list(range(10)), SamplingParams(max_tokens=10)))
 
 
 @pytest.mark.slow
 def test_llama_3_2_1b_continuous_batching_matches_huggingface(
-    llama_1b: Model, tokenizer: PreTrainedTokenizerBase
+    llama_1b: Model, tokenizer: PreTrainedTokenizerBase, kv_cache: str
 ) -> None:
     prompt_ids = [tokenizer(p).input_ids for p in PROMPTS]
     max_tokens = [40, 15, 30]
-    scheduler = Scheduler(llama_1b.weights, llama_1b.config, max_num_seqs=2, max_model_len=128)
+    scheduler = make_scheduler(llama_1b, kv_cache, 2, 128)
     requests = [
         Request(p, SamplingParams(max_tokens=m, temperature=0))
         for p, m in zip(prompt_ids, max_tokens)

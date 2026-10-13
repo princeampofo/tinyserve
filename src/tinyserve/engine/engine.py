@@ -52,7 +52,7 @@ def generate(
     cache = None
     if use_kv_cache:
         max_len = len(prompt_ids) + params.max_tokens
-        cache = KVCache.allocate(config, 1, max_len, device, weights.embed.dtype)
+        cache = KVCache.allocate(config, 1, max_len, device, weights.embed.dtype)  # one block
 
     input_ids = torch.tensor([prompt_ids], device=device)  # prefill: the whole prompt
     start_pos = 0
@@ -103,7 +103,7 @@ def run_static_batch(
     # compute-bound, so batching it would gain little.
     last_logits = torch.cat(
         [
-            forward(weights, config, torch.tensor([r.prompt_ids], device=device), 0, cache, [i])[
+            forward(weights, config, torch.tensor([r.prompt_ids], device=device), 0, cache, [[i]])[
                 :, -1
             ]
             for i, r in enumerate(requests)
@@ -137,6 +137,9 @@ class Engine:
     batching="continuous" (the default) runs the scheduler step by step, letting
     requests join and leave the batch at every step. batching="static" is the
     simpler baseline: collect up to max_batch_size requests, run them to completion.
+
+    kv_cache="paged" (the default) splits kv_cache_gb into 16-token blocks;
+    "contiguous" reserves max_model_len tokens per sequence (continuous batching only).
     """
 
     def __init__(
@@ -148,6 +151,8 @@ class Engine:
         batch_wait_s: float = 0.05,
         batching: Literal["continuous", "static"] = "continuous",
         max_model_len: int = 4096,
+        kv_cache: Literal["paged", "contiguous"] = "paged",
+        kv_cache_gb: float = 4.0,
     ) -> None:
         self.weights = weights
         self.config = config
@@ -156,6 +161,8 @@ class Engine:
         self.batch_wait_s = batch_wait_s
         self.batching = batching
         self.max_model_len = max_model_len
+        self.kv_cache = kv_cache
+        self.kv_cache_gb = kv_cache_gb
         self.queue: queue.Queue[Request] = queue.Queue()
 
     def submit(self, request: Request) -> None:
@@ -170,10 +177,19 @@ class Engine:
             if request.on_finish is not None:
                 request.on_finish(request)
 
-    def _continuous_loop(self) -> None:
-        scheduler = Scheduler(
-            self.weights, self.config, self.max_batch_size, self.max_model_len, self.tokenizer
+    def _new_scheduler(self) -> Scheduler:
+        return Scheduler.with_memory_budget(
+            self.weights,
+            self.config,
+            self.kv_cache,
+            self.kv_cache_gb,
+            self.max_batch_size,
+            self.max_model_len,
+            self.tokenizer,
         )
+
+    def _continuous_loop(self) -> None:
+        scheduler = self._new_scheduler()
         while True:
             # Block only when idle; otherwise pick up new arrivals without waiting
             # and go straight back to stepping the running sequences.
@@ -188,13 +204,7 @@ class Engine:
                 finished = [s.request for s in scheduler.running] + list(scheduler.waiting)
                 for request in finished:
                     request.finish_reason = request.finish_reason or "error"
-                scheduler = Scheduler(
-                    self.weights,
-                    self.config,
-                    self.max_batch_size,
-                    self.max_model_len,
-                    self.tokenizer,
-                )
+                scheduler = self._new_scheduler()
             self._finish(finished)
 
     def _next_batch(self) -> list[Request]:

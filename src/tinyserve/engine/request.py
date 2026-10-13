@@ -4,13 +4,14 @@ import uuid
 from collections.abc import Callable
 from dataclasses import dataclass, field
 
+import torch
 from transformers import PreTrainedTokenizerBase
 
-from tinyserve.engine.sampler import SamplingParams
+from tinyserve.engine.sampler import SamplingParams, make_generator
 from tinyserve.model.llama import LlamaConfig
 
 
-@dataclass
+@dataclass(eq=False)  # two requests are equal only if they are the same object
 class Request:
     """Token ids in, token ids out."""
 
@@ -23,10 +24,19 @@ class Request:
     finish_reason: str | None = None
     # Called on the engine thread once the request is done.
     on_finish: Callable[["Request"], None] | None = None
+    # The request's own random stream, created when it is first scheduled. It
+    # lives on the request (not the running sequence) so that a preempted
+    # request continues the same stream when it is recomputed.
+    generator: torch.Generator | None = None
 
     @property
     def finished(self) -> bool:
         return self.finish_reason is not None
+
+    def rng(self, device: str | torch.device) -> torch.Generator:
+        if self.generator is None:
+            self.generator = make_generator(self.params.seed, device)
+        return self.generator
 
 
 def append_token(

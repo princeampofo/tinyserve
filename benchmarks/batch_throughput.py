@@ -2,6 +2,8 @@
 
     uv run python benchmarks/batch_throughput.py --batching static --batch-sizes 1 4 8 16
     uv run python benchmarks/batch_throughput.py --batching continuous --batch-sizes 16
+    uv run python benchmarks/batch_throughput.py --batching continuous --kv-cache contiguous \
+        --kv-cache-gb 0.5 --max-model-len 2048 --batch-sizes 64
 
 Every request asks for a different number of output tokens (EOS is ignored so
 the lengths are exact), which shows what static batching wastes: a batch runs
@@ -55,12 +57,8 @@ def run_static(
     return finish_times
 
 
-def run_continuous(
-    weights: LlamaWeights, config: LlamaConfig, requests: list[Request], max_num_seqs: int
-) -> list[float]:
+def run_continuous(scheduler: Scheduler, requests: list[Request]) -> list[float]:
     """Run the requests through the scheduler. Returns each request's finish time."""
-    max_len = max(len(r.prompt_ids) + r.params.max_tokens for r in requests)
-    scheduler = Scheduler(weights, config, max_num_seqs, max_len)
     for request in requests:
         scheduler.add(request)
     start = time.perf_counter()
@@ -84,8 +82,13 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--device", default="mps" if torch.backends.mps.is_available() else "cpu")
     parser.add_argument("--batching", choices=["static", "continuous"], default="static")
+    parser.add_argument("--kv-cache", choices=["paged", "contiguous"], default="paged")
+    parser.add_argument("--kv-cache-gb", type=float, default=1.0, help="continuous batching only")
+    parser.add_argument("--max-model-len", type=int, default=2048, help="continuous batching only")
     parser.add_argument("--num-requests", type=int, default=32)
-    parser.add_argument("--batch-sizes", type=int, nargs="+", default=[1, 4, 8, 16])
+    parser.add_argument(
+        "--batch-sizes", type=int, nargs="+", default=[1, 4, 8, 16], help="max sequences at once"
+    )
     parser.add_argument("--min-tokens", type=int, default=32)
     parser.add_argument("--max-tokens", type=int, default=256)
     args = parser.parse_args()
@@ -96,27 +99,38 @@ def main() -> None:
     config.eos_token_ids = []  # always generate exactly max_tokens
     print(f"model={args.model} device={args.device} dtype={dtype} machine={platform.platform()}")
 
-    warmup = make_requests(tokenizer, 2, 4, 4)
-    run_static(weights, config, warmup, 2)
-    run_continuous(weights, config, make_requests(tokenizer, 2, 4, 4), 2)
+    def new_scheduler(max_num_seqs: int) -> Scheduler:
+        return Scheduler.with_memory_budget(
+            weights, config, args.kv_cache, args.kv_cache_gb, max_num_seqs, args.max_model_len
+        )
+
+    run_static(weights, config, make_requests(tokenizer, 2, 4, 4), 2)  # warmup
+    run_continuous(new_scheduler(2), make_requests(tokenizer, 2, 4, 4))
 
     print(
-        "batching,batch_size,requests,output_tokens,seconds,tokens_per_second,mean_finish_s,wasted_row_steps"
+        "batching,kv_cache,batch_size,requests,output_tokens,seconds,tokens_per_second,"
+        "mean_finish_s,wasted_row_steps,peak_running,preemptions"
     )
     for batch_size in args.batch_sizes:
         requests = make_requests(tokenizer, args.num_requests, args.min_tokens, args.max_tokens)
         if args.batching == "static":
+            kv_cache = "contiguous"
             finish_times = run_static(weights, config, requests, batch_size)
             waste = wasted_row_steps(requests, batch_size)
+            peak, preemptions = min(batch_size, len(requests)), 0
         else:
-            finish_times = run_continuous(weights, config, requests, batch_size)
+            kv_cache = args.kv_cache
+            scheduler = new_scheduler(batch_size)
+            finish_times = run_continuous(scheduler, requests)
             waste = 0.0  # finished sequences leave the batch at once
+            peak, preemptions = scheduler.peak_running, scheduler.num_preemptions
+            del scheduler  # free its KV cache before the next configuration allocates one
         elapsed = max(finish_times)
         tokens = sum(len(r.output_ids) for r in requests)
         mean_finish = sum(finish_times) / len(finish_times)
         print(
-            f"{args.batching},{batch_size},{len(requests)},{tokens},{elapsed:.1f},"
-            f"{tokens / elapsed:.1f},{mean_finish:.1f},{waste:.0%}"
+            f"{args.batching},{kv_cache},{batch_size},{len(requests)},{tokens},{elapsed:.1f},"
+            f"{tokens / elapsed:.1f},{mean_finish:.1f},{waste:.0%},{peak},{preemptions}"
         )
 
 

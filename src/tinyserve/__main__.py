@@ -25,7 +25,14 @@ def main() -> None:
         default="continuous",
         help="static is the simpler baseline, kept for comparison",
     )
-    parser.add_argument("--max-batch-size", type=int, default=8, help="max sequences per step")
+    parser.add_argument("--max-batch-size", type=int, default=64, help="max sequences per step")
+    parser.add_argument(
+        "--kv-cache",
+        choices=["paged", "contiguous"],
+        default="paged",
+        help="contiguous reserves --max-model-len tokens per sequence; kept for comparison",
+    )
+    parser.add_argument("--kv-cache-gb", type=float, default=4.0, help="KV cache memory budget")
     parser.add_argument(
         "--batch-wait-ms", type=float, default=50, help="static batching: wait to fill a batch"
     )
@@ -54,6 +61,8 @@ def main() -> None:
         batch_wait_s=args.batch_wait_ms / 1000,
         batching=args.batching,
         max_model_len=args.max_model_len,
+        kv_cache=args.kv_cache,
+        kv_cache_gb=args.kv_cache_gb,
     )
     engine.start()
 
