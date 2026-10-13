@@ -5,6 +5,7 @@ import threading
 import time
 from collections.abc import Iterator
 from concurrent.futures import ThreadPoolExecutor
+from typing import Literal
 
 import httpx
 import openai
@@ -21,10 +22,15 @@ from tinyserve.model.weights import weights_from_state_dict
 
 
 def serve(
-    weights: LlamaWeights, config: LlamaConfig, tokenizer: PreTrainedTokenizerBase
+    weights: LlamaWeights,
+    config: LlamaConfig,
+    tokenizer: PreTrainedTokenizerBase,
+    batching: Literal["continuous", "static"] = "continuous",
 ) -> Iterator[str]:
     """Run the real server on a free local port in a background thread; yield its base URL."""
-    engine = Engine(weights, config, tokenizer, max_batch_size=4, batch_wait_s=0.01)
+    engine = Engine(
+        weights, config, tokenizer, max_batch_size=4, batching=batching, max_model_len=512
+    )
     engine.start()
     app = create_app(engine, tokenizer, "tinyserve-test", max_model_len=512)
 
@@ -52,9 +58,14 @@ def tiny_with_real_vocab(tokenizer: PreTrainedTokenizerBase) -> Model:
     return Model(hf, config, weights_from_state_dict(config, hf.state_dict()))
 
 
-@pytest.fixture(scope="module")
-def base_url(tiny_with_real_vocab: Model, tokenizer: PreTrainedTokenizerBase) -> Iterator[str]:
-    yield from serve(tiny_with_real_vocab.weights, tiny_with_real_vocab.config, tokenizer)
+@pytest.fixture(scope="module", params=["continuous", "static"])
+def base_url(
+    request: pytest.FixtureRequest,
+    tiny_with_real_vocab: Model,
+    tokenizer: PreTrainedTokenizerBase,
+) -> Iterator[str]:
+    m = tiny_with_real_vocab
+    yield from serve(m.weights, m.config, tokenizer, request.param)
 
 
 @pytest.fixture

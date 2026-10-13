@@ -184,13 +184,15 @@ def attention_block(
     kv_len: int,
     k_cache: torch.Tensor | None,
     v_cache: torch.Tensor | None,
+    slots: torch.Tensor | None,
 ) -> torch.Tensor:
     """Project to q/k/v, rotate q/k by position, attend, project back. x: [batch, seq, hidden].
 
-    With a cache, row b's new K and V are written into the cache at
-    positions[b], and attention reads the first kv_len cached tokens (enough
-    for the longest row; the mask hides the rest from shorter rows). Without a
-    cache, the tokens attend only to each other.
+    With a cache, batch row b's new K and V are written into cache row
+    slots[b] (or row b if slots is None) at positions[b], and attention reads
+    the first kv_len cached tokens of that row (enough for the longest row; the
+    mask hides the rest from shorter rows). Without a cache, the tokens attend
+    only to each other.
     """
     batch, seq, _ = x.shape
     # [batch, seq, heads * head_dim] -> [batch, heads, seq, head_dim]
@@ -204,10 +206,13 @@ def attention_block(
     if k_cache is not None and v_cache is not None:
         # Scatter each row's new K/V to its own positions. Indexing dims 0 and 2
         # with [batch, seq] index tensors selects a [batch, seq, kv_heads, head_dim] block.
-        rows = torch.arange(batch, device=x.device)[:, None]
-        k_cache[rows, :, positions] = k.transpose(1, 2)
-        v_cache[rows, :, positions] = v.transpose(1, 2)
-        k, v = k_cache[:, :, :kv_len], v_cache[:, :, :kv_len]
+        rows = slots if slots is not None else torch.arange(batch, device=x.device)
+        k_cache[rows[:, None], :, positions] = k.transpose(1, 2)
+        v_cache[rows[:, None], :, positions] = v.transpose(1, 2)
+        if slots is None:  # rows 0..batch-1 of the cache: read them in place
+            k, v = k_cache[:batch, :, :kv_len], v_cache[:batch, :, :kv_len]
+        else:  # scattered rows: gather them into a new contiguous [batch, ...] tensor
+            k, v = k_cache[slots, :, :kv_len], v_cache[slots, :, :kv_len]
         q_index = positions  # a token's position is its index in the cache
     else:
         q_index = torch.arange(seq, device=x.device).expand(batch, seq)
@@ -235,6 +240,7 @@ def forward(
     input_ids: torch.Tensor,
     start_pos: int | list[int] = 0,
     cache: KVCache | None = None,
+    slots: list[int] | None = None,
 ) -> torch.Tensor:
     """Run the model on new tokens. input_ids: [batch, seq] -> logits: [batch, seq, vocab].
 
@@ -242,6 +248,10 @@ def forward(
     (an int means every row starts there). Prefill passes a whole prompt with
     start_pos=0; a decode step passes one token per row, with each row's
     start_pos = the number of tokens already in its cache row.
+
+    slots[b] is the cache row that batch row b uses. A continuous-batching
+    engine runs whichever sequences are active, wherever their rows are.
+    None means batch row b is cache row b.
     """
     batch, seq = input_ids.shape
     starts = [start_pos] * batch if isinstance(start_pos, int) else start_pos
@@ -249,6 +259,7 @@ def forward(
         seq, device=input_ids.device
     )  # [batch, seq]
     kv_len = max(starts) + seq  # computed from Python ints: reading it off the GPU would stall
+    slot_ids = torch.tensor(slots, device=input_ids.device) if slots is not None else None
 
     x = weights.embed[input_ids]  # [batch, seq, hidden]
     cos, sin = rope_cos_sin(positions, rope_inv_freq(config, x.device), x.dtype)
@@ -259,7 +270,9 @@ def forward(
         # Pre-norm residual blocks: normalize the input to each block, then add
         # its output back onto the unnormalized "residual stream" x.
         h = rms_norm(x, layer.attn_norm, config.rms_norm_eps)
-        x = x + attention_block(h, layer, config, cos, sin, positions, kv_len, k_cache, v_cache)
+        x = x + attention_block(
+            h, layer, config, cos, sin, positions, kv_len, k_cache, v_cache, slot_ids
+        )
         x = x + mlp_block(rms_norm(x, layer.mlp_norm, config.rms_norm_eps), layer)
 
     x = rms_norm(x, weights.final_norm, config.rms_norm_eps)

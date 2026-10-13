@@ -5,7 +5,8 @@ import torch
 from conftest import PROMPTS, Model, hf_greedy
 from transformers import PreTrainedTokenizerBase
 
-from tinyserve.engine.engine import Request, generate, run_static_batch
+from tinyserve.engine.engine import generate, run_static_batch
+from tinyserve.engine.request import Request
 from tinyserve.engine.sampler import SamplingParams
 
 

@@ -19,9 +19,15 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--device", default="mps" if torch.backends.mps.is_available() else "cpu")
     parser.add_argument("--dtype", choices=DTYPES, help="default: float16 on a GPU, float32 on CPU")
-    parser.add_argument("--max-batch-size", type=int, default=8)
     parser.add_argument(
-        "--batch-wait-ms", type=float, default=50, help="how long to wait to fill a batch"
+        "--batching",
+        choices=["continuous", "static"],
+        default="continuous",
+        help="static is the simpler baseline, kept for comparison",
+    )
+    parser.add_argument("--max-batch-size", type=int, default=8, help="max sequences per step")
+    parser.add_argument(
+        "--batch-wait-ms", type=float, default=50, help="static batching: wait to fill a batch"
     )
     parser.add_argument("--max-model-len", type=int, default=4096, help="prompt + output tokens")
     parser.add_argument("--host", default="127.0.0.1")
@@ -41,7 +47,13 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     config, weights = load_model(args.model, args.device, dtype)
     engine = Engine(
-        weights, config, tokenizer, args.max_batch_size, batch_wait_s=args.batch_wait_ms / 1000
+        weights,
+        config,
+        tokenizer,
+        max_batch_size=args.max_batch_size,
+        batch_wait_s=args.batch_wait_ms / 1000,
+        batching=args.batching,
+        max_model_len=args.max_model_len,
     )
     engine.start()
 

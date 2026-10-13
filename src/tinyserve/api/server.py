@@ -22,7 +22,8 @@ from tinyserve.api.schemas import (
     SamplingFields,
     Usage,
 )
-from tinyserve.engine.engine import Engine, Request
+from tinyserve.engine.engine import Engine
+from tinyserve.engine.request import Request
 from tinyserve.engine.sampler import SamplingParams
 
 

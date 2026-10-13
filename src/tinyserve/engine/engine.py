@@ -8,23 +8,23 @@ Generation has two phases:
    an EOS token, a stop string, or max_tokens.
 
 `generate()` does this for one prompt. `run_static_batch()` does it for a batch
-of requests at once, and `Engine` runs batches on a background thread for the
-HTTP server.
+of requests at once. `Engine` serves the HTTP server from a background thread,
+with either static batching or continuous batching (`scheduler.py`).
 """
 
 import logging
 import queue
 import threading
 import time
-import uuid
-from collections.abc import Callable
-from dataclasses import dataclass, field
+from typing import Literal
 
 import torch
 from transformers import PreTrainedTokenizerBase
 
 from tinyserve.engine.kv_cache import KVCache
+from tinyserve.engine.request import Request, append_token
 from tinyserve.engine.sampler import SamplingParams, make_generator, sample
+from tinyserve.engine.scheduler import Scheduler
 from tinyserve.model.llama import LlamaConfig, LlamaWeights, forward
 
 log = logging.getLogger(__name__)
@@ -74,44 +74,6 @@ def generate(
     return output
 
 
-@dataclass
-class Request:
-    """One generation request as the engine sees it: token ids in, token ids out."""
-
-    prompt_ids: list[int]
-    params: SamplingParams
-    id: str = field(default_factory=lambda: uuid.uuid4().hex)
-    output_ids: list[int] = field(default_factory=list)
-    # "stop" (EOS token or stop string), "length" (hit max_tokens), "abort"
-    # (the caller gave up), "error"; None while still running.
-    finish_reason: str | None = None
-    # Called on the engine thread once the request is done.
-    on_finish: Callable[["Request"], None] | None = None
-
-    @property
-    def finished(self) -> bool:
-        return self.finish_reason is not None
-
-
-def append_token(
-    request: Request,
-    token: int,
-    config: LlamaConfig,
-    tokenizer: PreTrainedTokenizerBase | None,
-) -> None:
-    """Record a newly generated token and decide whether the request is done."""
-    request.output_ids.append(token)
-    if token in config.eos_token_ids:
-        request.finish_reason = "stop"
-    elif request.params.stop and tokenizer is not None:
-        # Stop strings are text, and one can span several tokens, so check the decoded output.
-        text = tokenizer.decode(request.output_ids)
-        if any(s in text for s in request.params.stop):
-            request.finish_reason = "stop"
-    if not request.finished and len(request.output_ids) >= request.params.max_tokens:
-        request.finish_reason = "length"
-
-
 @torch.inference_mode()
 def run_static_batch(
     weights: LlamaWeights,
@@ -141,7 +103,7 @@ def run_static_batch(
     # compute-bound, so batching it would gain little.
     last_logits = torch.cat(
         [
-            forward(weights, config, torch.tensor([r.prompt_ids], device=device), 0, cache.row(i))[
+            forward(weights, config, torch.tensor([r.prompt_ids], device=device), 0, cache, [i])[
                 :, -1
             ]
             for i, r in enumerate(requests)
@@ -165,12 +127,16 @@ def run_static_batch(
 
 
 class Engine:
-    """Owns the model and runs batches on a background thread.
+    """Owns the model and runs requests on a background thread.
 
     The model calls block for milliseconds to seconds, so they can't run on the
     web server's event loop: it would stop accepting and answering requests.
-    The server puts requests on a queue, and this thread takes them off in
-    batches, runs them, and reports back through each request's on_finish.
+    The server puts requests on a queue; this thread takes them off, runs them,
+    and reports back through each request's on_finish.
+
+    batching="continuous" (the default) runs the scheduler step by step, letting
+    requests join and leave the batch at every step. batching="static" is the
+    simpler baseline: collect up to max_batch_size requests, run them to completion.
     """
 
     def __init__(
@@ -180,19 +146,56 @@ class Engine:
         tokenizer: PreTrainedTokenizerBase | None = None,
         max_batch_size: int = 8,
         batch_wait_s: float = 0.05,
+        batching: Literal["continuous", "static"] = "continuous",
+        max_model_len: int = 4096,
     ) -> None:
         self.weights = weights
         self.config = config
         self.tokenizer = tokenizer
         self.max_batch_size = max_batch_size
         self.batch_wait_s = batch_wait_s
+        self.batching = batching
+        self.max_model_len = max_model_len
         self.queue: queue.Queue[Request] = queue.Queue()
 
     def submit(self, request: Request) -> None:
         self.queue.put(request)
 
     def start(self) -> None:
-        threading.Thread(target=self._loop, name="engine", daemon=True).start()
+        target = self._continuous_loop if self.batching == "continuous" else self._static_loop
+        threading.Thread(target=target, name="engine", daemon=True).start()
+
+    def _finish(self, requests: list[Request]) -> None:
+        for request in requests:
+            if request.on_finish is not None:
+                request.on_finish(request)
+
+    def _continuous_loop(self) -> None:
+        scheduler = Scheduler(
+            self.weights, self.config, self.max_batch_size, self.max_model_len, self.tokenizer
+        )
+        while True:
+            # Block only when idle; otherwise pick up new arrivals without waiting
+            # and go straight back to stepping the running sequences.
+            if not scheduler.has_work():
+                scheduler.add(self.queue.get())
+            while not self.queue.empty():
+                scheduler.add(self.queue.get_nowait())
+            try:
+                finished = scheduler.step()
+            except Exception:
+                log.exception("scheduler step failed; failing all in-flight requests")
+                finished = [s.request for s in scheduler.running] + list(scheduler.waiting)
+                for request in finished:
+                    request.finish_reason = request.finish_reason or "error"
+                scheduler = Scheduler(
+                    self.weights,
+                    self.config,
+                    self.max_batch_size,
+                    self.max_model_len,
+                    self.tokenizer,
+                )
+            self._finish(finished)
 
     def _next_batch(self) -> list[Request]:
         """Block until a request arrives, then wait up to batch_wait_s for more to
@@ -210,7 +213,7 @@ class Engine:
                 break
         return [r for r in batch if not r.finished]  # skip requests aborted while queued
 
-    def _loop(self) -> None:
+    def _static_loop(self) -> None:
         while True:
             batch = self._next_batch()
             if not batch:
@@ -223,6 +226,4 @@ class Engine:
                 for request in batch:
                     if not request.finished:
                         request.finish_reason = "error"
-            for request in batch:
-                if request.on_finish is not None:
-                    request.on_finish(request)
+            self._finish(batch)
