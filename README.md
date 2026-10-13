@@ -31,6 +31,8 @@ uv run python benchmarks/load_gen.py --rate 2 --duration 60      # Poisson load,
 
 ![Grafana dashboard during a load test](deploy/grafana/dashboard.png)
 
+*Llama 3.2 1B (fp16, MacBook Air M4) with a deliberately small 0.25 GB KV cache, under streamed Poisson load: 2 req/s then 6 req/s for 90 s each (prompts 20–200 words, outputs 32–256 tokens). Throughput saturates at ~165 tokens/s, so the queue grows and TTFT climbs, while the full KV cache causes steady preemptions. All 705 requests completed.*
+
 ## Generate
 
 ```bash
