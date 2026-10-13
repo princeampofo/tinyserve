@@ -14,9 +14,8 @@ from safetensors.torch import load_file
 
 from tinyserve.model.llama import LayerWeights, LlamaConfig, LlamaWeights
 
-# Llama 3.2 1B Instruct. This is an ungated mirror of meta-llama/Llama-3.2-1B-Instruct
-# with identical weights, so it downloads without requesting access from Meta.
-DEFAULT_MODEL = "unsloth/Llama-3.2-1B-Instruct"
+# A gated repo: request access on its HuggingFace page, then `hf auth login`.
+DEFAULT_MODEL = "meta-llama/Llama-3.2-1B-Instruct"
 
 
 def weights_from_state_dict(
@@ -64,7 +63,11 @@ def load_model(
     if not path.is_dir():
         path = Path(snapshot_download(model, allow_patterns=["*.json", "*.safetensors"]))
 
-    config = LlamaConfig.from_hf_dict(json.loads((path / "config.json").read_text()))
+    generation_path = path / "generation_config.json"
+    config = LlamaConfig.from_hf_dict(
+        json.loads((path / "config.json").read_text()),
+        json.loads(generation_path.read_text()) if generation_path.exists() else None,
+    )
     state: dict[str, torch.Tensor] = {}
     for f in sorted(path.glob("*.safetensors")):
         state.update(load_file(f))

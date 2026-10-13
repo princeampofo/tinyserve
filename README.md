@@ -2,12 +2,17 @@
 
 An LLM inference server built from scratch in PyTorch, serving Llama 3.2.
 
-**Status:** the Llama forward pass is done and matches HuggingFace logits (bit-identical on CPU, within 1e-5 on Apple MPS). Serving features come next.
-
 ## Setup
 
 ```bash
 uv sync
+hf auth login   # Llama 3.2 is gated: request access at huggingface.co/meta-llama/Llama-3.2-1B-Instruct first
+```
+
+## Generate
+
+```bash
+uv run python benchmarks/single_request.py "Explain what a KV cache is."
 ```
 
 ## Tests

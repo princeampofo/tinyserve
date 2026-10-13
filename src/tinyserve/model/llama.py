@@ -19,6 +19,7 @@ from typing import Any
 import torch
 import torch.nn.functional as F
 
+from tinyserve.engine.kv_cache import KVCache
 from tinyserve.model.attention import causal_attention
 
 
@@ -36,10 +37,16 @@ class LlamaConfig:
     # Llama 3.1+ "llama3" RoPE scaling. None means plain RoPE.
     rope_scaling: dict[str, Any] | None
     tie_word_embeddings: bool
+    # Generating any of these ends the sequence. Llama 3.2 Instruct has three:
+    # <|end_of_text|>, <|eom_id|> and <|eot_id|> (end of a chat turn).
+    eos_token_ids: list[int]
 
     @classmethod
-    def from_hf_dict(cls, d: dict[str, Any]) -> "LlamaConfig":
-        """Build from a HuggingFace config.json dict.
+    def from_hf_dict(
+        cls, d: dict[str, Any], generation_config: dict[str, Any] | None = None
+    ) -> "LlamaConfig":
+        """Build from a HuggingFace config.json dict (and optionally generation_config.json,
+        whose EOS list is the one HF generate() stops on).
 
         Hub config.json files use `rope_theta` + `rope_scaling`; transformers 5
         merges both into `rope_parameters`. Accept either.
@@ -47,6 +54,8 @@ class LlamaConfig:
         rope = d.get("rope_parameters") or d.get("rope_scaling") or {}
         rope_theta = rope.get("rope_theta", d.get("rope_theta", 10000.0))
         rope_type = rope.get("rope_type", rope.get("type", "default"))
+        eos = (generation_config or {}).get("eos_token_id", d.get("eos_token_id"))
+        eos_token_ids = [] if eos is None else [eos] if isinstance(eos, int) else list(eos)
         return cls(
             vocab_size=d["vocab_size"],
             hidden_size=d["hidden_size"],
@@ -59,6 +68,7 @@ class LlamaConfig:
             rope_theta=rope_theta,
             rope_scaling=rope if rope_type == "llama3" else None,
             tie_word_embeddings=d.get("tie_word_embeddings", False),
+            eos_token_ids=eos_token_ids,
         )
 
 
@@ -170,8 +180,16 @@ def attention_block(
     config: LlamaConfig,
     cos: torch.Tensor,
     sin: torch.Tensor,
+    start_pos: int,
+    k_cache: torch.Tensor | None,
+    v_cache: torch.Tensor | None,
 ) -> torch.Tensor:
-    """Project to q/k/v, rotate q/k by position, attend, project back. x: [batch, seq, hidden]."""
+    """Project to q/k/v, rotate q/k by position, attend, project back. x: [batch, seq, hidden].
+
+    With a cache, the new tokens' K and V are written into it at
+    [start_pos, start_pos + seq), and attention reads every cached token from 0
+    up to the newest one. Without a cache, the tokens attend only to each other.
+    """
     batch, seq, _ = x.shape
     # [batch, seq, heads * head_dim] -> [batch, heads, seq, head_dim]
     q = (x @ w.wq.T).view(batch, seq, config.num_heads, config.head_dim).transpose(1, 2)
@@ -180,6 +198,12 @@ def attention_block(
 
     q = apply_rope(q, cos, sin)
     k = apply_rope(k, cos, sin)
+
+    if k_cache is not None and v_cache is not None:
+        end = start_pos + seq
+        k_cache[:, :, start_pos:end] = k
+        v_cache[:, :, start_pos:end] = v
+        k, v = k_cache[:, :, :end], v_cache[:, :, :end]
 
     out = causal_attention(q, k, v)  # [batch, heads, seq, head_dim]
     out = out.transpose(1, 2).reshape(batch, seq, config.num_heads * config.head_dim)
@@ -202,21 +226,28 @@ def forward(
     weights: LlamaWeights,
     config: LlamaConfig,
     input_ids: torch.Tensor,
-    positions: torch.Tensor | None = None,
+    start_pos: int = 0,
+    cache: KVCache | None = None,
 ) -> torch.Tensor:
-    """Run the full model. input_ids: [batch, seq] -> logits: [batch, seq, vocab]."""
-    if positions is None:
-        positions = torch.arange(input_ids.shape[1], device=input_ids.device).expand_as(input_ids)
+    """Run the model on new tokens. input_ids: [batch, seq] -> logits: [batch, seq, vocab].
+
+    The tokens sit at positions start_pos .. start_pos + seq - 1. Prefill passes
+    the whole prompt with start_pos=0; each decode step passes one token with
+    start_pos = number of tokens already in the cache.
+    """
+    seq = input_ids.shape[1]
+    positions = torch.arange(start_pos, start_pos + seq, device=input_ids.device)[None]
 
     x = weights.embed[input_ids]  # [batch, seq, hidden]
     cos, sin = rope_cos_sin(positions, rope_inv_freq(config, x.device), x.dtype)
 
-    for layer in weights.layers:
+    for i, layer in enumerate(weights.layers):
+        k_cache = cache.k[i] if cache is not None else None
+        v_cache = cache.v[i] if cache is not None else None
         # Pre-norm residual blocks: normalize the input to each block, then add
         # its output back onto the unnormalized "residual stream" x.
-        x = x + attention_block(
-            rms_norm(x, layer.attn_norm, config.rms_norm_eps), layer, config, cos, sin
-        )
+        h = rms_norm(x, layer.attn_norm, config.rms_norm_eps)
+        x = x + attention_block(h, layer, config, cos, sin, start_pos, k_cache, v_cache)
         x = x + mlp_block(rms_norm(x, layer.mlp_norm, config.rms_norm_eps), layer)
 
     x = rms_norm(x, weights.final_norm, config.rms_norm_eps)
